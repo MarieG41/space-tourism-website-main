@@ -313,7 +313,7 @@ select {
         --underline-gap:.5rem;
         position: fixed;
         z-index: 1000;
-        inset: 0 0 0 20%;
+        inset: 0 0 0 30%;
         background: hsl( var(--clr-white) / .1);
         list-style: none;
         padding: min(20rem, 15vh) 2rem;
@@ -425,6 +425,25 @@ select {
     background-color: hsl( var(--clr-white) / 1); 
 }
 
+.number-indicators > * {
+    cursor: pointer;
+    border: 2px solid hsl( var(--clr-white) / .25);
+    border-radius: 50%;
+    background-color: hsl( var(--clr-dark) );
+    color: hsl( var(--clr-white) );
+    aspect-ratio: 1;
+}
+
+.number-indicators > *:hover,
+.number-indicators > *:focus {
+    border-color: hsl( var(--clr-white) / .5);
+}
+
+.number-indicators > [aria-selected="true"] {
+    background-color: hsl( var(--clr-white) / 1); 
+    color: hsl( var(--clr-dark) )
+}
+
 /*Page specific background */
 
 body {
@@ -516,7 +535,6 @@ body {
 
 /*destination layout */
 .grid-container--destination {
-    display: grid;
     grid-template-areas: 
         'title'
         'image'
@@ -577,6 +595,37 @@ body {
 
 .crew-details h2 {
     opacity: .5;
+}
+
+
+/*technology layout */
+
+.grid-container--technology {
+    --flow-space: 2rem;
+    padding-inline: 0;
+    grid-template-areas: 
+        'title'
+        'image'
+        'tabs'
+        'content';
+}
+
+.grid-container--technology h1 {
+    padding-inline-start: 2rem;
+}
+
+.grid-container--technology > .technology-details {
+    grid-area: content;
+}
+.technology-details {
+    padding-inline: 2rem;
+}
+.grid-container--technology > .number-indicators {
+    grid-area: tabs;
+    display: flex;
+    gap: 1rem;
+    aspect-ratio: 2;
+    justify-content: center;
 }
 
 @media (min-width: 35em) {
@@ -641,13 +690,6 @@ body {
             '. content image .'
             '. tabs image .';
     }
-    .grid-container--crew > .dot-indicators {
-        justify-self: start;
-    }
-
-    .grid-container--crew > picture{
-        align-self: end;
-    }
 
     .grid-container--crew picture {
         grid-column: span 2;
@@ -655,4 +697,30 @@ body {
         max-width: 100%;
     }
     
+    .grid-container--technology {
+        grid-template-areas: 
+            '. title title .'
+            '. content image .'
+            '. tabs image .';
+            grid-template-columns: minmax(9rem, 1fr)  minmax(0, 40rem) minmax(0, 30rem);
+            justify-items: start;   
+            --gap: 3rem;
+    }
+
+    .grid-container--technology picture {
+        grid-column: span 2;
+    }
+    .grid-container--technology > .number-indicators {
+        grid-area: tabs;
+        display: grid;
+        gap: 1.5rem;
+        aspect-ratio:.6;
+        position: absolute;
+        justify-content: start;
+        padding-inline-start: 8rem;
+    }
+    
+    .grid-container--technology > picture{
+        align-self: end;
+    }
 }
