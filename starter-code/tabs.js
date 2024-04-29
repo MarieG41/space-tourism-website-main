@@ -62,21 +62,3 @@ function changeTabFocus(e) {
         tabs[tabFocus].focus()
     }
 }
-
-
-// let allPlanets = []
-// planets()
-
-// function planets() {
-//     fetch('data.json')
-//     .then (res => res.json())
-//     .then (res => {
-//         allPlanets = allPlanets.concat(res.destinations)
-//         allPlanets.forEach((planete) => {
-//             planetsName.textContent = planete.name
-//             planetsDescription.textContent = planete.description
-//             planetsDistance.textContent = planete.distance
-//             planetsTimeTravel.textContent = planete.travel
-//         })
-//     })
-// }
